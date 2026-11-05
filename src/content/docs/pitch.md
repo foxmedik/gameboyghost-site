@@ -1,0 +1,154 @@
+---
+title: "The pitch"
+track: "Tour"
+---
+
+In plain English
+
+GameBoyGhost teaches a computer program to play an old Game Boy game by copying an expert, one short stretch at a time. The game is a safe practice target. The real point is to show how to run a system carefully: every run can be repeated exactly, every result is checked before it counts, and every mistake gets written up honestly.
+
+Imagine you want to practice good IT habits: change control, audit trails, sign-offs before release, and honest reviews after things go wrong. You don’t want to practice on a real production system. You want a test system that behaves the same way every time. It should be small enough to understand completely, and you should be able to see everything happening inside it.
+
+A 1990s Game Boy game, running inside an **emulator** (software that pretends to be the Game Boy hardware), is exactly that.
+
+Four boxes in a row joined by arrows: a closed world, a repeatable worker, exact facts read from memory, and a pass/fail verdict. A wide box underneath, the expert operator, is joined by lines to the first and third boxes.Closed worldone game, one start pointbutton presses onlyRepeatable workerits own processsame input, same outputExact factsread straight fromthe game’s memoryPass or failtested once,then locked for goodThe expert operatorknows the game like a sysadmin knows their servers: the route, the hazards, what “done” looks likeThe big picture. A sealed-off game goes in. A worker runs it the same way every time. Exact facts come out. A test turns those facts into a pass or fail. An expert who knows the game anchors the whole loop.
+
+## Why a game makes a good test system
+
+Section titled “Why a game makes a good test system”
+
+**It is repeatable.** Think of a build server that produces the exact same file every time you build the same code. Here, every run happens in its own separate program on the computer. The results must not change based on how many runs happen at once, or in what order. When a check calls for it, the run is repeated and the output must match byte for byte (a byte is the smallest unit of stored data, so this means identical down to the last detail). This property is called **determinism**.
+
+**It is self-contained.** No network, no clock, no other users. Each run starts from one fixed starting point, loaded exactly once. After that, the game only moves forward through button presses. There are no shortcuts: no saving and reloading, and no copying a running game. It is like rebuilding a server from scratch instead of restoring a snapshot.
+
+**You can see everything.** On a real server, you trust your monitoring. Here, the program reads the game’s memory directly. “Did this step succeed?” becomes an exact yes-or-no question, not a judgment call.
+
+**There is a real expert.** The route through the game was mapped and checked room by room, the way a seasoned admin documents a system they have run for years. So for every stretch of the game, a human can say exactly what “correct” looks like.
+
+how exact are the facts?
+
+At each decision point, the system captures a fixed **record** of 4,413 whole-number values from the game’s memory. Success for a stretch of the game is defined as a precise test over those values. The stretch ahead was checked against 85 recorded room visits, with each visit’s purpose noted.
+
+## What the system does
+
+Section titled “What the system does”
+
+GameBoyGhost breaks the game’s journey into **segments** , short stretches with a clear start and finish. The current plan runs through the first dungeon, called Tail Cave. For each segment, the project builds three things:
+
+  1. A **teacher** : an expert program from the project’s earlier work that already knows how to play that stretch.
+  2. A **student** : a small program that learns the segment by copying expert answers. This is called **imitation learning**. The student only gets a limited view of the game.
+  3. A **gate** : a test that is written down in advance and run exactly once. It decides whether the student’s segment is finished and **sealed** (locked forever).
+
+Segments S0, S1 and S2 are sealed. S3 to S18 are planned. For S3, the project is building an **oracle** : a program that gives the correct answer for any situation the student might be in. The student learns from the oracle’s answers.
+
+The public goal is bigger than the current plan. It is a full run from power-on, through Tail Cave, up to collecting an item called the Full Moon Cello. The extra segments for the boss fight and the Cello will be designed later. Until then they are PLANNED.
+
+This browser cannot play the video. [Open the GIF version](/media/2026-10-04/hero-s3-full.gif)Play
+
+3× speed[Verified replay: game state hash-checked every frame](/data-publishing/#how-the-footage-is-made)
+
+The oracle controller plays the whole S3 segment by itself, from the forest where S2 ends, through the cave, to picking up the Sleepy Toadstool, shown at 3× speed. No human input and no saved states: one start-up load, then recorded button presses only.Provenance
+
+Item
+    `hero-s3-full`: The oracle plays S3 on its own
+Source run
+    Phase 4b oracle drive, iteration 1 (s3-oracle-drive-v1 after fix 1), repeat-1: SUCCESS, Done:E3 at f14576
+Range
+    frames 12917–14576 (1,660 frames), drive ticks 1–1660
+Playback
+    3×: one of every 3 emulator frames, played at 59.7275 frames per second; 9.276 s
+Verification
+    Re-rendered from one boot-state load by input replay only; all 14,570 emulator frames from frame 7 to frame 14576 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0.
+Verified range digest
+    `80f22477bc163a587cc5bec825b66014a0e2973cdee3618eaa32352067d35f47`
+Screen-off frames shown white
+    13223, 13229, 13232, 13244, 13976, 13985, 13997
+Files (SHA-256)
+    
+
+  * `hero-s3-full.webm`, 798,763 bytes: `93f10835c9a9ce5b304f267e1f571594a3e4e26a191939236666a30f4c293f97`
+  * `hero-s3-full-poster.png`, 11,177 bytes: `7583006fa730d302e039f346fa7270bb8745d97ce8c28fb2ad446bbfc8da91fd`
+  * `hero-s3-full.gif`, 1,230,831 bytes: `704ee2c37cdcc6f2ffb571c31d1ae31c02dc0e8a9493a40f4cc66f1acf959018`
+
+[How the footage is made](/data-publishing/#how-the-footage-is-made)
+
+This browser cannot play the video. [Open the GIF version](/media/2026-10-04/hero-s3-realtime.gif)Play
+
+[Verified replay: game state hash-checked every frame](/data-publishing/#how-the-footage-is-made)
+
+The same run at normal speed. The first nine seconds of the oracle's S3 run at normal speed, as Link crosses two forest screens and enters the cave.Provenance
+
+Item
+    `hero-s3-realtime`: The oracle plays S3 (real time)
+Source run
+    Phase 4b oracle drive, iteration 1 (s3-oracle-drive-v1 after fix 1), repeat-1: SUCCESS, Done:E3 at f14576
+Range
+    frames 12917–13460 (544 frames), drive ticks 1–544
+Playback
+    real time (59.7275 frames per second); 9.108 s
+Verification
+    Re-rendered from one boot-state load by input replay only; all 13,454 emulator frames from frame 7 to frame 13460 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0.
+Verified range digest
+    `fec14ff900cdd58c080f2713d869c509aa66fbf43b804c7c3517ce37c5b2edf1`
+Screen-off frames shown white
+    13222, 13223, 13229, 13230, 13231, 13232, 13242, 13243, 13244
+Files (SHA-256)
+    
+
+  * `hero-s3-realtime.webm`, 653,883 bytes: `d538e8a180ec1020a4a6e9f4739f7fe8499d3146973a39d3f0e06fb95bd34fc3`
+  * `hero-s3-realtime-poster.png`, 11,578 bytes: `4f83ccab74ad8529ecb769879f8b89f8776c7c4b65c3bb62d844d50058fddf29`
+  * `hero-s3-realtime.gif`, 1,124,570 bytes: `258e27a796aa27b6fa545f25dfaf88ceaa39a83dbe2a5408122bb3b775a59b45`
+
+[How the footage is made](/data-publishing/#how-the-footage-is-made)
+
+## Why this is more than a toy
+
+Section titled “Why this is more than a toy”
+
+A few strict habits keep the exercise honest.
+
+**Tests are decided in advance and run once.** It works like a change window. You agree on the pass criteria before you start. You run the test. You don’t move the goalposts afterward. A segment passes only if the student succeeds in at least 97% of the test cases, with zero crashes or data errors. A failed gate is never re-run with an easier bar.
+
+**Failures stay on the books.** Sometimes a test run can’t even reach the start of the segment. Those runs are counted and reported separately. They are never quietly dropped. For S2, 294 of 300 test cases reached the start. The student then passed all 294.
+
+**The end-to-end target is spelled out.** The final test plays the whole chain from power-on, 300 times. It needs at least 291 successes. Many links in a chain add up to a lot of risk, so each segment is held to a stricter bar during development than at its gate.
+
+the exact numbers
+
+  * The standing gate rule is: primary clears of at least `ceil(0.97 × N)` out of N cases, written in code as `(97*N+99)//100`. On top of that, zero integrity, tracker or execution exceptions are allowed, and all determinism re-checks must match.
+  * For S2, N was 294, so the minimum was 286. The result was 294 of 294.
+  * The design calculates that sixteen new segments, each at exactly 97%, would compose to only about 61.4% end to end. That is why each new segment must first reach zero failures on a development panel of at least 200 runs before its gate may be locked.
+
+## What it does not claim
+
+Section titled “What it does not claim”
+
+The project is careful about the limits of its evidence, and so is this guide. Passing a fixed set of test cases does not prove the student will handle every situation. Planning numbers, such as assumed reliability or compute-time estimates, are labeled as assumptions. Some parts, like the overnight supervisor, are PLANNED and not built yet.
+
+## Source note
+
+Facts on this page come from these files in the source repositories ($SEGMENTS unless noted):
+
+  * `AGENTS.md (one-load rule R13, determinism rules, separate processes, gate rule)`
+  * `dev-smoke/v3-design-20261002/DESIGN-V3.1.md (Part 2: 85 audited room visits; Part 3: segment plan; Part 8: development target, final chain test, 61.4% figure)`
+  * `dev-smoke/v3-foundation-p1-20261002/AMENDMENT-A1.md (record of 4,413 values)`
+  * `dev-smoke/oracle-v5-4b-20261004/REPORT.md (the first full oracle run of S3, shown in the clips)`
+  * `dev-smoke/media-capture-20261004/REPORT.md and media-manifest.json (both clips: speeds, frames, captions, verification)`
+  * `gbg-data/RESULTS.md (S2 sealed gate: 294/300 reached the start, 294/294 passed; limits of finite test panels)`
+  * `Author's notes (premiere goal, decided Oct 4, 2026; supervisor PLANNED)`
+
+---
+
+## Source note
+
+## Source note
+
+Facts on this page come from these files in the source repositories ($SEGMENTS unless noted):
+
+  * `AGENTS.md (one-load rule R13, determinism rules, separate processes, gate rule)`
+  * `dev-smoke/v3-design-20261002/DESIGN-V3.1.md (Part 2: 85 audited room visits; Part 3: segment plan; Part 8: development target, final chain test, 61.4% figure)`
+  * `dev-smoke/v3-foundation-p1-20261002/AMENDMENT-A1.md (record of 4,413 values)`
+  * `dev-smoke/oracle-v5-4b-20261004/REPORT.md (the first full oracle run of S3, shown in the clips)`
+  * `dev-smoke/media-capture-20261004/REPORT.md and media-manifest.json (both clips: speeds, frames, captions, verification)`
+  * `gbg-data/RESULTS.md (S2 sealed gate: 294/300 reached the start, 294/294 passed; limits of finite test panels)`
+  * `Author's notes (premiere goal, decided Oct 4, 2026; supervisor PLANNED)`

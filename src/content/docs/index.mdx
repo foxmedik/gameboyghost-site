@@ -1,0 +1,99 @@
+---
+title: "GameBoyGhost operator's guide"
+hero:
+  tagline: The infrastructure is the project. The game is the workload.
+  actions:
+    - text: Start the tour
+      link: /pitch/
+      icon: right-arrow
+    - text: How to read this guide
+      link: /how-to-read/
+---
+
+import Media from '../../components/Media.astro';
+
+## Find your way
+
+The guide has three tracks. They are subjects, not reading levels, so start with whichever interests you. New here? Start with the Tour.
+
+### Start here
+
+Who this guide is for, the three tracks, and the conventions.
+
+- [How to read this guide](/how-to-read/)
+
+### Tour: the big picture
+
+What the project is, how it fits together, and its ground rules. About 15 minutes.
+
+- [The pitch](/pitch/)
+- [Architecture](/architecture/)
+- [Principles, translated](/principles/)
+- [War stories](/war-stories/)
+
+### Operator: running it
+
+Running it day to day: setup, the daily routine, the commands, security, batch jobs.
+
+- [Stack setup](/setup/)
+- [The daily loop](/daily-loop/)
+- [CLI reference](/cli/)
+- [Shell and agent security](/security/)
+- [Batch cookbook](/cookbook/)
+
+### Builder: how it works
+
+How it's built: how batches are recorded, how the learning works, the oracle, the planned supervisor, data publishing.
+
+- [The campaign system](/campaigns/)
+- [The learning stack](/learning-stack/)
+- [The oracle up close](/oracle/)
+- [The supervisor ("foreman")](/supervisor/)
+- [Data and publishing](/data-publishing/)
+
+### Reference
+
+Look things up: the glossary, a command cheat sheet, the project rulebook explained, troubleshooting.
+
+- [Glossary](/glossary/)
+- [Appendix A: Command cheat sheet](/appendix-cheatsheet/)
+- [Appendix B: AGENTS.md explained](/appendix-agents-md/)
+- [Appendix C: Troubleshooting](/appendix-troubleshooting/)
+
+## See it run
+
+<Media
+  id="home-hero"
+  slot="home-hero"
+  alt="Game footage at 3× speed: Link, steered by the oracle, crosses two forest screens, enters a cave, works through three cave rooms, comes out in another forest screen and holds up the Sleepy Toadstool."
+  poster="/media/2026-10-04/hero-s3-full-poster.png"
+  webm="/media/2026-10-04/hero-s3-full.webm"
+  gif="/media/2026-10-04/hero-s3-full.gif"
+  speed="3× speed"
+  badgeText="Verified replay: game state hash-checked every frame"
+  badgeHref="/data-publishing/#how-the-footage-is-made"
+  caption="GameBoyGhost splits the game into segments: short stretches with a clear start and finish. Here the oracle, a program built to give the correct move for any situation in the segment, plays segment S3 with no human input. The oracle controller plays the whole S3 segment by itself, from the forest where S2 ends, through the cave, to picking up the Sleepy Toadstool, shown at 3× speed."
+  provenance={[
+    { term: 'Item', desc: 'hero-s3-full: The oracle plays S3 on its own' },
+    { term: 'Source run', desc: 'Phase 4b oracle drive, iteration 1 (s3-oracle-drive-v1 after fix 1), repeat-1: SUCCESS, Done:E3 at f14576' },
+    { term: 'Range', desc: 'frames 12917–14576 (1,660 frames), drive ticks 1–1660' },
+    { term: 'Playback', desc: '3×: one of every 3 emulator frames, played at 59.7275 frames per second; 9.276 s' },
+    { term: 'Verification', desc: 'Re-rendered from one boot-state load by input replay only; all 14,570 emulator frames from frame 7 to frame 14576 matched the recorded run per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0.' },
+    { term: 'Verified range digest', desc: '80f22477bc163a587cc5bec825b66014a0e2973cdee3618eaa32352067d35f47', hash: true },
+    { term: 'Screen-off frames shown white', desc: '13223, 13229, 13232, 13244, 13976, 13985, 13997' },
+    { term: 'Files (SHA-256)', list: [
+      'hero-s3-full.webm, 798,763 bytes: 93f10835c9a9ce5b304f267e1f571594a3e4e26a191939236666a30f4c293f97',
+      'hero-s3-full-poster.png, 11,177 bytes: 7583006fa730d302e039f346fa7270bb8745d97ce8c28fb2ad446bbfc8da91fd',
+      'hero-s3-full.gif, 1,230,831 bytes: 704ee2c37cdcc6f2ffb571c31d1ae31c02dc0e8a9493a40f4cc66f1acf959018',
+    ] },
+  ]}
+/>
+
+Want it at normal speed? [Watch the first nine seconds in real time](/pitch/#media-pitch-realtime) on the pitch page, or read [how the footage is made](/data-publishing/#how-the-footage-is-made).
+
+## Source note
+
+Facts on this page come from these files in the source repositories (`$SEGMENTS` unless noted):
+
+- `dev-smoke/media-capture-20261004/REPORT.md` and `media-manifest.json` (the clip, its speed, frames and verification)
+- `dev-smoke/oracle-v5-4b-20261004/REPORT.md` (the oracle run shown: S3 done at frame 14576)

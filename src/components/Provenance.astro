@@ -1,0 +1,40 @@
+---
+import Clip from './Clip.astro';
+
+interface Item {
+  term: string;
+  desc: string;
+  code?: boolean; // render desc in a <code>
+  hash?: boolean; // render desc in a <code class="gbg-hash">
+  list?: string[]; // render a list of <code> entries
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<details class="gbg-provenance">
+  <summary>Provenance</summary>
+  <dl>
+    {
+      items.map((item) => (
+        <>
+          <dt>{item.term}</dt>
+          <dd>
+            {item.hash ? <code class="gbg-hash">{item.desc}</code> : item.code ? <code>{item.desc}</code> : item.desc}
+            {item.list && (
+              <ul>
+                {item.list.map((li) => (
+                  <li><code>{li}</code></li>
+                ))}
+              </ul>
+            )}
+          </dd>
+        </>
+      ))
+    }
+  </dl>
+</details>

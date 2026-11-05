@@ -1,0 +1,64 @@
+---
+import Clip from './Clip.astro';
+import Provenance from './Provenance.astro';
+
+interface Item {
+  term: string;
+  desc: string;
+  code?: boolean;
+  hash?: boolean;
+  list?: string[];
+}
+
+interface Props {
+  id: string;
+  slot: string;
+  alt: string;
+  poster: string;
+  webm: string;
+  gif: string;
+  caption: string;
+  speed?: string;
+  badgeText?: string;
+  badgeHref?: string;
+  width?: number;
+  height?: number;
+  provenance?: Item[];
+}
+
+const {
+  id,
+  slot,
+  alt,
+  poster,
+  webm,
+  gif,
+  caption,
+  speed,
+  badgeText,
+  badgeHref,
+  width,
+  height,
+  provenance = [],
+} = Astro.props;
+---
+
+<figure class="gbg-media gbg-media-single" data-slot={slot} id={`media-${id}`}>
+  <div class="gbg-media-items">
+    <div class="gbg-item gbg-x3">
+      <div class="gbg-frame">
+        <Clip alt={alt} poster={poster} webm={webm} gif={gif} width={width} height={height} />
+      </div>
+      <p class="gbg-item-meta">
+        {speed && <span class="gbg-speed">{speed}</span>}
+        {badgeText && (
+          <a class="gbg-badge" href={badgeHref}>
+            {badgeText}
+          </a>
+        )}
+      </p>
+    </div>
+  </div>
+  <figcaption>{caption}</figcaption>
+  {provenance.length > 0 && <Provenance items={provenance} />}
+</figure>

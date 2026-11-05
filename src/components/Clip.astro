@@ -1,0 +1,56 @@
+---
+// A GameBoyGhost gameplay clip: a <video> with a GIF fallback and a custom play button.
+interface Props {
+  alt: string;
+  poster: string;
+  webm: string;
+  gif: string;
+  width?: number;
+  height?: number;
+}
+
+const { alt, poster, webm, gif, width = 480, height = 432 } = Astro.props;
+---
+
+<div
+  class="gbg-clip"
+  data-alt={alt}
+  data-gif={gif}
+  data-poster={poster}
+  data-state="paused"
+>
+  <video
+    aria-label={alt}
+    class="gbg-px"
+    controls
+    loop
+    muted
+    playsinline
+    poster={poster}
+    preload="metadata"
+    width={width}
+    height={height}
+  >
+    <source src={webm} type='video/webm; codecs="vp9"' />
+    This browser cannot play the video. <a href={gif}>Open the GIF version</a>
+  </video>
+  <button aria-label="Play clip" class="gbg-play" hidden type="button">
+    <span aria-hidden="true" class="gbg-play-icon"></span>
+    <span class="gbg-play-text">Play</span>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll('.gbg-clip').forEach((clip) => {
+    const video = clip.querySelector('video');
+    const btn = clip.querySelector('.gbg-play');
+    if (!video || !btn) return;
+    btn.hidden = false;
+    const sync = () => (btn.hidden = !video.paused);
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    video.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
+    btn.addEventListener('click', () => video.play());
+    sync();
+  });
+</script>

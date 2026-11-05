@@ -1,0 +1,20 @@
+---
+// GameBoyGhost status banner — overrides Starlight's Banner component.
+const { entry } = Astro.locals.starlightRoute;
+const track = entry?.data?.track;
+
+const STATUS =
+  'S1 &amp; S2 sealed (294/294 each). S3 oracle certified 250/250. S3 student certified 250/250 — trained on 186 residues, held out 64, 6 prefix-failures excluded. Premiere goal: Tail Cave through collection of the Full Moon Cello.';
+---
+
+<div class="gbg-banner" role="note">
+  <p class="gbg-status"><strong>Status:</strong> <span set:html={STATUS} /></p>
+  {
+    track && (
+      <p class="gbg-tracks">
+        <span class="gbg-label">Track:</span>
+        <span class={`gbg-chip gbg-chip-${track.toLowerCase()}`}>{track}</span>
+      </p>
+    )
+  }
+</div>
