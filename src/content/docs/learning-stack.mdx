@@ -2,6 +2,8 @@
 title: "The learning stack"
 track: "Builder"
 ---
+import Media from '../../components/Media.astro';
+
 
 In plain English
 
@@ -300,3 +302,31 @@ Facts on this page come from these files in the source repositories ($SEGMENTS u
   * `AGENTS.md (sections 5 and 8: label rules, gate rules)`
   * `data-architecture/spec.md (DAgger loop)`
   * `Author's notes (premiere goal and the later segments, decided Oct 4, 2026)`
+## Footage
+
+<Media
+  id="route-boss-door"
+  slotName="route-boss-door"
+  alt="Game footage: Link walks through a blue-floored dungeon room toward the doorway at the top, which leads to the boss."
+  poster="/media/2026-10-04/boss-door-poster.png"
+  webm="/media/2026-10-04/boss-door.webm"
+  gif="/media/2026-10-04/boss-door.gif"
+  badgeText="Verified replay: game state hash-checked every frame"
+  badgeHref="/data-publishing/#how-the-footage-is-made"
+  caption="Where this is heading: the boss door of Tail Cave, where the current design ends (S18). The teacher, the project's earlier expert program, already reaches it in its recorded run. Provenance Item boss-door-still : At the Tail Cave boss door Source run house-to-boss-door-v1 frozen teacher run (the recorded teacher trajectory; frame log from route-scoping-20261001) Range frame 48737 Verification Re-rendered from one boot-state load by input replay only; all 48,731 emulator frames from frame 7 to frame 48737 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0. Verified range digest 20288c34eaf2ff9f5056fa0e62211e64d8afcb240bf26441cac7c3d9327301ed Files (SHA-256) boss-door-still.png , 9,945 bytes: cd6b763f80cc93878a7f64166c1173f4918823a1d6d5396d33610d9619b7a0ed Item boss-door : Arrival at the Tail Cave boss door Source run house-to-boss-door-v1 frozen teacher run (the recorded teacher trajectory; frame log from route-scoping-20261001) Range frames 48440–48737 (298 frames) Playback real time (59.7275 frames per second); 4.99 s Verification Re-rendered from one boot-state load by input replay only; all 48,731 emulator frames from frame 7 to frame 48737 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0. Verified range digest 722bba942fd59333522e6d89a7ce7831432ce326bcdd1ba3347207317aecbf75 Files (SHA-256) boss-door.webm , 201,297 bytes: 69dda11bdf6f86b3b0dd039c9c7e51de0903cec98d777a178a7cc45e0c4c1bf6 boss-door-poster.png , 9,945 bytes: cd6b763f80cc93878a7f64166c1173f4918823a1d6d5396d33610d9619b7a0ed boss-door.gif , 251,890 bytes: 3c72d4bad12e8f25a738a9db79e8d2dadc4c7edcb60d2acec68e8a14385c7004 How the footage is made"
+  provenance={[
+    { term: "Item", desc: "boss-door-still", code: true },
+    { term: "Source run", desc: "house-to-boss-door-v1 frozen teacher run (the recorded teacher trajectory; frame log from route-scoping-20261001)" },
+    { term: "Range", desc: "frame 48737" },
+    { term: "Verification", desc: "Re-rendered from one boot-state load by input replay only; all 48,731 emulator frames from frame 7 to frame 48737 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0." },
+    { term: "Verified range digest", desc: "20288c34eaf2ff9f5056fa0e62211e64d8afcb240bf26441cac7c3d9327301ed", hash: true },
+    { term: "Files (SHA-256)", desc: "cd6b763f80cc93878a7f64166c1173f4918823a1d6d5396d33610d9619b7a0ed", hash: true },
+    { term: "Item", desc: "boss-door", code: true },
+    { term: "Source run", desc: "house-to-boss-door-v1 frozen teacher run (the recorded teacher trajectory; frame log from route-scoping-20261001)" },
+    { term: "Range", desc: "frames 48440–48737 (298 frames)" },
+    { term: "Playback", desc: "real time (59.7275 frames per second); 4.99 s" },
+    { term: "Verification", desc: "Re-rendered from one boot-state load by input replay only; all 48,731 emulator frames from frame 7 to frame 48737 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0." },
+    { term: "Verified range digest", desc: "722bba942fd59333522e6d89a7ce7831432ce326bcdd1ba3347207317aecbf75", hash: true },
+    { term: "Files (SHA-256)", desc: "69dda11bdf6f86b3b0dd039c9c7e51de0903cec98d777a178a7cc45e0c4c1bf6", hash: true },
+  ]}
+/>

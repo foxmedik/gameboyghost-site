@@ -2,6 +2,8 @@
 title: "War stories"
 track: "Tour"
 ---
+import Media from '../../components/Media.astro';
+
 
 In plain English
 
@@ -283,3 +285,54 @@ Facts on this page come from these files in the source repositories ($SEGMENTS u
   * `dev-smoke/s2-gateprep-20261001/REPORT.md, dev-smoke/s2-gaterelock-20261001/REPORT.md, s2-gate-20261001/SUPERSEDED.md, s2-gate-20261001b/CRITERIA.md (story 7)`
   * `gbg-data/RESULTS.md (S2 sealed result and correction)`
   * `Author's notes (S2 gate history: the 99% advisor error; why exact-commit pinning was replaced)`
+## Footage
+
+<Media
+  id="war-cave-door"
+  slotName="war-cave-door"
+  alt="Game footage at 6× speed: Link stands just below a cave door in the forest and keeps stepping toward it and back again without going in."
+  poster="/media/2026-10-04/iter0-stuck-poster.png"
+  webm="/media/2026-10-04/iter0-stuck.webm"
+  gif="/media/2026-10-04/iter0-stuck.gif"
+  speed="6× speed"
+  badgeText="Verified replay: game state hash-checked every frame"
+  badgeHref="/data-publishing/#how-the-footage-is-made"
+  caption="Iteration 0, the run this postmortem is about. The oracle's first S3 attempt reached the cave door and then kept stepping back and forth beneath it until its 1,600-decision budget ran out, shown at 6× speed. Provenance Item iter0-stuck : War story: stuck at the cave door Source run Phase 4b oracle drive, iteration 0 (4a tables), repeat-1: FAILURE, DECISION_BUDGET_EXHAUSTED at f15668 Range frames 13059–15668 (2,610 frames), drive ticks 143–2752 Playback 6×: one of every 6 emulator frames, played at 59.7275 frames per second; 7.283 s Verification Re-rendered from one boot-state load by input replay only; all 15,662 emulator frames from frame 7 to frame 15668 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0. Verified range digest c9a79030609dbba9d0823170246bc43da5ac2951c461473830db28d855cdd646 Files (SHA-256) iter0-stuck.webm , 191,250 bytes: 3f6080b73de63317645a6d4b5910a3bfded2d735b474e1fb4acc07ab6805623e iter0-stuck-poster.png , 9,016 bytes: 0922adaad4a79e49951c867c353a406868fa9ad3b4fa808aa545453194afeca0 iter0-stuck.gif , 272,575 bytes: 8b1cd1e85c5c49fe8b001c6457f78ec998d48a15e62d3c58a7fd129173d4d246 How the footage is made"
+  provenance={[
+    { term: "Item", desc: "iter0-stuck", code: true },
+    { term: "Source run", desc: "Phase 4b oracle drive, iteration 0 (4a tables), repeat-1: FAILURE, DECISION_BUDGET_EXHAUSTED at f15668" },
+    { term: "Range", desc: "frames 13059–15668 (2,610 frames), drive ticks 143–2752" },
+    { term: "Playback", desc: "6×: one of every 6 emulator frames, played at 59.7275 frames per second; 7.283 s" },
+    { term: "Verification", desc: "Re-rendered from one boot-state load by input replay only; all 15,662 emulator frames from frame 7 to frame 15668 matched the recorded run's per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0." },
+    { term: "Verified range digest", desc: "c9a79030609dbba9d0823170246bc43da5ac2951c461473830db28d855cdd646", hash: true },
+    { term: "Files (SHA-256)", desc: "3f6080b73de63317645a6d4b5910a3bfded2d735b474e1fb4acc07ab6805623e", hash: true },
+  ]}
+/>
+
+<Media
+  id="war-crumble-fall"
+  slotName="war-crumble-fall"
+  alt="Game footage: in an orange cave room, Link walks along a row of crumbling floor cells with his shield raised. A bat flies into him and pushes him back along the row, a floor cell gives way, and he falls."
+  poster="/media/2026-10-05/s3-21039-before-4c-poster.png"
+  webm="/media/2026-10-05/s3-21039-before-4c.webm"
+  gif="/media/2026-10-05/s3-21039-before-4c.gif"
+  badgeText="Physically verified replay: game state hash-checked every frame"
+  badgeHref="/data-publishing/#how-the-footage-is-made"
+  caption="Run 21039 with the old oracle and with the fixed one. Both clips start at the same moment: Link on the last solid cell before the crumbling floor. Provenance Item s3-21039-before-4c : Before the fix: the 21039 fall Source run Phase 4d Part B: 4c-oracle re-run of offset 21039 Range frames 32432–32752 (321 frames) Playback real time (59.7275 frames per second); 5.375 s Verification Re-rendered from one boot-state load by input replay only; all 32,752 emulator frames from frame 1 to frame 32752 matched the recorded run's per-frame physical digests. Physically verified: the 4c oracle's table-dependent tracker digests were reproduced only up to frame 32431 (today's code cannot fold the 4c table past the crumbling-run gate cell), and its label records and views were not rebuilt. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0. Verified range digest 1efcfec01f01448d4998bf57c211816f5fe671a99f52b32121efcd61325f6823 Files (SHA-256) s3-21039-before-4c.webm , 283,441 bytes: 97f57935a08dbc6f00b37a6ab5c9b2aadb2406e30bd18d4d66eedf32638ed1f4 s3-21039-before-4c-poster.png , 12,653 bytes: 308ac304c9abd46ddc45061498f69998c99da77a31e766e53589e21a9f477c8b s3-21039-before-4c.gif , 196,462 bytes: 5f714bf9c6ff46b91da74824524146296ae4a2599cf8cf37cd7d8d6f4ed3a167 Item s3-21039-after-4d : After the fix: the same start crosses Source run Phase 4d regression campaign s3-4d-regression, shard e21039 Range frames 32432–32715 (284 frames) Playback real time (59.7275 frames per second); 4.755 s Verification Re-rendered from one boot-state load by input replay only; all 33,692 emulator frames from frame 1 to frame 33692 matched the recorded run's per-frame digests, and every tracker, record and view digest of the recorded run was reproduced. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0. Verified range digest 009cad8f434b0ddfcea450d75c10f291fac5688c759bd9dedfb6a9ed4fc92fa5 Files (SHA-256) s3-21039-after-4d.webm , 238,939 bytes: c91178b68d7f55fa139562ab46e6321894834a4f9a824765dde2de8dd107d98d s3-21039-after-4d-poster.png , 12,789 bytes: bfcd9f77495193b0426c3646b99dfc6204e4764dd81f1e28bf70c93b005449c8 s3-21039-after-4d.gif , 741,612 bytes: cf5f679443e846bec77aff96d4f8359e71150363a68594184b6542147cdb8acf How the footage is made"
+  provenance={[
+    { term: "Item", desc: "s3-21039-before-4c", code: true },
+    { term: "Source run", desc: "Phase 4d Part B: 4c-oracle re-run of offset 21039" },
+    { term: "Range", desc: "frames 32432–32752 (321 frames)" },
+    { term: "Playback", desc: "real time (59.7275 frames per second); 5.375 s" },
+    { term: "Verification", desc: "Re-rendered from one boot-state load by input replay only; all 32,752 emulator frames from frame 1 to frame 32752 matched the recorded run's per-frame physical digests. Physically verified: the 4c oracle's table-dependent tracker digests were reproduced only up to frame 32431 (today's code cannot fold the 4c table past the crumbling-run gate cell), and its label records and views were not rebuilt. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0." },
+    { term: "Verified range digest", desc: "1efcfec01f01448d4998bf57c211816f5fe671a99f52b32121efcd61325f6823", hash: true },
+    { term: "Files (SHA-256)", desc: "97f57935a08dbc6f00b37a6ab5c9b2aadb2406e30bd18d4d66eedf32638ed1f4", hash: true },
+    { term: "Item", desc: "s3-21039-after-4d", code: true },
+    { term: "Source run", desc: "Phase 4d regression campaign s3-4d-regression, shard e21039" },
+    { term: "Range", desc: "frames 32432–32715 (284 frames)" },
+    { term: "Playback", desc: "real time (59.7275 frames per second); 4.755 s" },
+    { term: "Verification", desc: "Re-rendered from one boot-state load by input replay only; all 33,692 emulator frames from frame 1 to frame 33692 matched the recorded run's per-frame digests, and every tracker, record and view digest of the recorded run was reproduced. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0." },
+    { term: "Verified range digest", desc: "009cad8f434b0ddfcea450d75c10f291fac5688c759bd9dedfb6a9ed4fc92fa5", hash: true },
+    { term: "Files (SHA-256)", desc: "c91178b68d7f55fa139562ab46e6321894834a4f9a824765dde2de8dd107d98d", hash: true },
+  ]}
+/>
