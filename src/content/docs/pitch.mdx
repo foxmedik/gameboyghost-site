@@ -3,6 +3,8 @@ title: "The pitch"
 track: "Tour"
 ---
 
+import Media from '../../components/Media.astro';
+
 In plain English
 
 GameBoyGhost teaches a computer program to play an old Game Boy game by copying an expert, one short stretch at a time. The game is a safe practice target. The real point is to show how to run a system carefully: every run can be repeated exactly, every result is checked before it counts, and every mistake gets written up honestly.
@@ -10,6 +12,28 @@ GameBoyGhost teaches a computer program to play an old Game Boy game by copying 
 Imagine you want to practice good IT habits: change control, audit trails, sign-offs before release, and honest reviews after things go wrong. You don’t want to practice on a real production system. You want a test system that behaves the same way every time. It should be small enough to understand completely, and you should be able to see everything happening inside it.
 
 A 1990s Game Boy game, running inside an **emulator** (software that pretends to be the Game Boy hardware), is exactly that.
+
+<Media
+  id="pitch-hero"
+  slot="pitch-hero"
+  alt="Game footage at 3× speed: Link, steered by the oracle, crosses two forest screens, enters a cave, works through three cave rooms, comes out in another forest screen and holds up the Sleepy Toadstool."
+  poster="/media/2026-10-04/hero-s3-full-poster.png"
+  webm="/media/2026-10-04/hero-s3-full.webm"
+  gif="/media/2026-10-04/hero-s3-full.gif"
+  speed="3× speed"
+  badgeText="Verified replay: game state hash-checked every frame"
+  badgeHref="/data-publishing/#how-the-footage-is-made"
+  caption="The oracle controller plays the whole S3 segment by itself, from the forest where S2 ends, through the cave, to picking up the Sleepy Toadstool, shown at 3× speed. No human input and no saved states: one start-up load, then recorded button presses only."
+  provenance={[
+    { term: 'Item', desc: 'hero-s3-full: The oracle plays S3 on its own' },
+    { term: 'Source run', desc: 'Phase 4b oracle drive, iteration 1 (s3-oracle-drive-v1 after fix 1), repeat-1: SUCCESS, Done:E3 at f14576' },
+    { term: 'Range', desc: 'frames 12917–14576 (1,660 frames), drive ticks 1–1660' },
+    { term: 'Playback', desc: '3×: one of every 3 emulator frames, played at 59.7275 frames per second; 9.276 s' },
+    { term: 'Verification', desc: 'Re-rendered from one boot-state load by input replay only; all 14,570 emulator frames from frame 7 to frame 14576 matched the recorded run per-frame digests. Start-up loads: 1. Other saved-state loads: 0. Memory writes: 0.' },
+    { term: 'Verified range digest', desc: '80f22477bc163a587cc5bec825b66014a0e2973cdee3618eaa32352067d35f47', hash: true },
+    { term: 'Screen-off frames shown white', desc: '13223, 13229, 13232, 13244, 13976, 13985, 13997' },
+  ]}
+/>
 
 Four boxes in a row joined by arrows: a closed world, a repeatable worker, exact facts read from memory, and a pass/fail verdict. A wide box underneath, the expert operator, is joined by lines to the first and third boxes.Closed worldone game, one start pointbutton presses onlyRepeatable workerits own processsame input, same outputExact factsread straight fromthe game’s memoryPass or failtested once,then locked for goodThe expert operatorknows the game like a sysadmin knows their servers: the route, the hazards, what “done” looks likeThe big picture. A sealed-off game goes in. A worker runs it the same way every time. Exact facts come out. A test turns those facts into a pass or fail. An expert who knows the game anchors the whole loop.
 
