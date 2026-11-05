@@ -12,7 +12,7 @@ interface Item {
 
 interface Props {
   id: string;
-  slot: string;
+  slotName: string;
   alt: string;
   poster: string;
   webm: string;
@@ -28,7 +28,7 @@ interface Props {
 
 const {
   id,
-  slot,
+  slotName,
   alt,
   poster,
   webm,
@@ -43,7 +43,7 @@ const {
 } = Astro.props;
 ---
 
-<figure class="gbg-media gbg-media-single" data-slot={slot} id={`media-${id}`}>
+<figure class="gbg-media gbg-media-single" data-slot={slotName} id={`media-${id}`}>
   <div class="gbg-media-items">
     <div class="gbg-item gbg-x3">
       <div class="gbg-frame">
