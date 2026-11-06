@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/FrontDoor.astro';
+import clipsData from '../data/clips.json';
+
+const clips = clipsData.clips;
+---
+
+<Layout
+  title="Watch it"
+  description="Verified gameplay clips from GameBoyGhost's own runs, frame-checked against the recorded game state."
+>
+  <h1>Watch it</h1>
+
+  <p class="lede">
+    Every clip is re-rendered from a single boot-state load by input replay only, then hash-checked
+    against the recorded run frame by frame. A clip with a <a class="badge" href="/data-publishing/#how-the-footage-is-made">verified replay</a>
+    badge matched on every frame.
+  </p>
+
+  <p>
+    The <strong>GIFs are the shareable unit</strong> — grab one, drop it anywhere. The video and its
+    provenance are the proof behind it.
+  </p>
+
+  <div class="gallery">
+    {clips.map((clip) => (
+      <figure class="clip">
+        <video controls muted loop playsinline preload="metadata" poster={clip.poster}>
+          <source src={clip.webm} type="video/webm" />
+        </video>
+        <figcaption>
+          <div class="clip-head">
+            <a class="badge" href="/data-publishing/#how-the-footage-is-made">verified replay</a>
+            <span class="mono clip-speed">{clip.speed}</span>
+          </div>
+          <div class="clip-title">{clip.title}</div>
+          <div class="clip-caption">{clip.caption}</div>
+          <a class="mono clip-grab" href={clip.gif}>grab the GIF</a>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <p class="lede" style="margin-top:2rem">
+    More clips are on the way — the full capture set will be added here as each clip's caption and
+    verification digest are pulled from its media manifest.
+  </p>
+</Layout>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .clip { margin: 0; }
+  .clip video, .clip img {
+    width: 100%;
+    aspect-ratio: 160 / 144;
+    object-fit: cover;
+    background: #000;
+    image-rendering: pixelated;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    display: block;
+  }
+  .clip-head { display: flex; align-items: center; gap: 0.6rem; margin: 0.6rem 0 0.3rem; }
+  .clip-speed { color: var(--muted); font-size: 0.8rem; }
+  .clip-title { font-weight: 700; }
+  .clip-caption { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+  .clip-grab { font-size: 0.8rem; }
+</style>

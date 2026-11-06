@@ -1,0 +1,62 @@
+---
+import '../styles/frontdoor.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const nav = [
+  { href: '/what-it-is/', label: 'What it is' },
+  { href: '/watch/', label: 'Watch it' },
+  { href: '/what-happened/', label: 'What happened' },
+  { href: '/who-built-it/', label: 'Who built it' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — GameBoyGhost</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="site-head-inner">
+        <a class="brand" href="/">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <rect width="48" height="48" rx="9" fill="#8BAC0F" />
+            <path d="M16 14c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5v11h-3v3.5h-2V25h-6v3.5h-2V25h-3z" fill="#10161f" />
+            <g stroke="#9BBC0F" stroke-width="2" stroke-linecap="round">
+              <path d="M21 14l3 3M24 14l-3 3" />
+              <path d="M27 14l3 3M30 14l-3 3" />
+            </g>
+          </svg>
+          <span class="brand-name">GameBoyGhost</span>
+        </a>
+        <nav class="nav">
+          {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a class="engine" href="/how-to-read/">The engine room</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page">
+      <slot />
+    </main>
+    <footer class="site-foot">
+      <p>The infrastructure is the project. The game is the workload.</p>
+      <p>
+        <a href="https://github.com/foxmedik/GameBoyGhost">GitHub</a> ·
+        <a href="https://www.youtube.com/@GameboyGhost-dx">YouTube</a>
+      </p>
+      <p class="foot-note">
+        Gameplay footage captured from the author's own autonomous research runs; no ROM or proprietary game assets are distributed.
+      </p>
+    </footer>
+  </body>
+</html>

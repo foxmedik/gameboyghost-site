@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/FrontDoor.astro';
+import status from '../data/current-status.json';
+---
+
+<Layout
+  title="GameBoyGhost"
+  description="An autonomous-agent research project that teaches a computer to play Link's Awakening — one short stretch at a time, under incident-response-grade change control."
+>
+  <p class="tagline">The infrastructure is the project. The game is the workload.</p>
+
+  <h1>GameBoyGhost teaches a computer to play <em>Link's Awakening</em>.</h1>
+
+  <p class="lede">
+    One short stretch at a time. The game is a practice target — a test system that behaves the
+    same way every time and can never be broken. The real work is everything around it: runs that
+    repeat exactly, results that are checked before they count, and failures that get written up
+    instead of hidden.
+  </p>
+
+  <h2>The clip that says it all</h2>
+  <p>
+    Same run, same room, same starting moment. Left: the old version — Link keeps his shield up, a
+    bat knocks him back, the floor gives way, and he falls. Right: after the fix — shield down, he
+    walks across and finishes the segment. Both clips are verified frame by frame against the
+    recorded run. That loop — <strong>fail, diagnose, fix, prove</strong> — is the whole project.
+  </p>
+
+  <div class="hero-media">
+    <figure>
+      <video
+        controls muted loop playsinline preload="metadata"
+        poster="/media/2026-10-05/s3-21039-before-4c-poster.png"
+      >
+        <source src="/media/2026-10-05/s3-21039-before-4c.webm" type="video/webm" />
+      </video>
+      <figcaption>
+        <span class="label">Before</span> — the old version: the shield stays up, the floor gives
+        way, he falls. <a class="badge" href="/data-publishing/#how-the-footage-is-made">verified replay</a>
+      </figcaption>
+    </figure>
+    <figure>
+      <video
+        controls muted loop playsinline preload="metadata"
+        poster="/media/2026-10-05/s3-21039-after-4d-poster.png"
+      >
+        <source src="/media/2026-10-05/s3-21039-after-4d.webm" type="video/webm" />
+      </video>
+      <figcaption>
+        <span class="label">After</span> — the fix: shield down, he walks across and finishes the
+        segment. <a class="badge" href="/data-publishing/#how-the-footage-is-made">verified replay</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>The honest status</h2>
+  <p>Not a trophy case.</p>
+  <table class="status-table">
+    <thead>
+      <tr>
+        <th>Segment</th>
+        <th>Result</th>
+        <th>The honest part</th>
+      </tr>
+    </thead>
+    <tbody>
+      {status.segments.map((seg) => (
+        <tr>
+          <td>{seg.id}{seg.label ? ` — ${seg.label}` : ''}</td>
+          <td class="num">{seg.result}</td>
+          <td set:html={seg.note} />
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p>
+    The arc is the point: we sealed the first segment at 90%, realized that wasn't strict enough,
+    and raised our own bar to 97% before sealing the next two. Anyone can pick a number; the story
+    is that the standard got <em>stricter</em> as the work went on.
+  </p>
+
+  <div class="doors">
+    <a class="door" href="/what-it-is/">
+      <div class="door-title">Read the story</div>
+      <div class="door-sub">What it is · Watch it · What happened · Who built it</div>
+    </a>
+    <a class="door" href="/how-to-read/">
+      <div class="door-title">The engine room</div>
+      <div class="door-sub">The technical manual, unchanged in rigor</div>
+    </a>
+  </div>
+</Layout>

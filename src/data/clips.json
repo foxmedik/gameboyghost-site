@@ -1,0 +1,93 @@
+{
+  "note": "Verified gameplay clips. mbpublish will regenerate this from dev-smoke/<task>/media-manifest.json. Each clip is re-rendered from one boot-state load and hash-checked against the recorded run.",
+  "clips": [
+    {
+      "title": "The oracle plays S3",
+      "webm": "/media/2026-10-04/hero-s3-full.webm",
+      "poster": "/media/2026-10-04/hero-s3-full-poster.png",
+      "gif": "/media/2026-10-04/hero-s3-full.gif",
+      "speed": "3× speed",
+      "caption": "The oracle plays the whole S3 segment by itself — from the forest where S2 ends, through the cave, to picking up the Sleepy Toadstool. No human input, no saved states."
+    },
+    {
+      "title": "The same run, real time",
+      "webm": "/media/2026-10-04/hero-s3-realtime.webm",
+      "poster": "/media/2026-10-04/hero-s3-realtime-poster.png",
+      "gif": "/media/2026-10-04/hero-s3-realtime.gif",
+      "speed": "real time",
+      "caption": "The first nine seconds of the S3 run at normal speed, as Link crosses two forest screens and enters the cave."
+    },
+    {
+      "title": "Stuck at the cave door",
+      "webm": "/media/2026-10-04/iter0-stuck.webm",
+      "poster": "/media/2026-10-04/iter0-stuck-poster.png",
+      "gif": "/media/2026-10-04/iter0-stuck.gif",
+      "speed": "6× speed",
+      "caption": "The oracle's first S3 attempt reached the cave door and stepped back and forth beneath it until its 1,600-decision budget ran out. The cause was a 4-pixel tolerance."
+    },
+    {
+      "title": "The crumbling-floor fall (before)",
+      "webm": "/media/2026-10-05/s3-21039-before-4c.webm",
+      "poster": "/media/2026-10-05/s3-21039-before-4c-poster.png",
+      "gif": "/media/2026-10-05/s3-21039-before-4c.gif",
+      "speed": "real time",
+      "caption": "With the old oracle, Link keeps his shield up on the crumbling floor. A bat knocks him back, the floor gives way, and he falls."
+    },
+    {
+      "title": "The crumbling-floor fix (after)",
+      "webm": "/media/2026-10-05/s3-21039-after-4d.webm",
+      "poster": "/media/2026-10-05/s3-21039-after-4d-poster.png",
+      "gif": "/media/2026-10-05/s3-21039-after-4d.gif",
+      "speed": "real time",
+      "caption": "After the fix, the shield stays down on crumbling cells. Same start, same room — he walks across and finishes the segment."
+    },
+    {
+      "title": "Two rock pushes in the cave",
+      "webm": "/media/2026-10-04/s3-block-pushes.webm",
+      "poster": "/media/2026-10-04/s3-block-pushes-poster.png",
+      "gif": "/media/2026-10-04/s3-block-pushes.gif",
+      "speed": "real time",
+      "caption": "In cave room C:AB the oracle pushes one rock left and a second rock down to clear the way to the exit, at normal speed."
+    },
+    {
+      "title": "Crossing the crumbling floor",
+      "webm": "/media/2026-10-04/s3-crumbling-climb.webm",
+      "poster": "/media/2026-10-04/s3-crumbling-climb-poster.png",
+      "gif": "/media/2026-10-04/s3-crumbling-climb.gif",
+      "speed": "real time",
+      "caption": "In cave room C:BD the oracle walks Link around the room and across the crumbling floor to the top exit without any floor tile collapsing, at normal speed."
+    },
+    {
+      "title": "Picking up the Sleepy Toadstool",
+      "webm": "/media/2026-10-04/s3-toadstool.webm",
+      "poster": "/media/2026-10-04/s3-toadstool-poster.png",
+      "gif": "/media/2026-10-04/s3-toadstool.gif",
+      "speed": "real time",
+      "caption": "In the forest the oracle walks Link to the Sleepy Toadstool, picks it up and waits through the message until the game records the item, at normal speed."
+    },
+    {
+      "title": "Assigning an item in the menu",
+      "webm": "/media/2026-10-04/menu-assign.webm",
+      "poster": "/media/2026-10-04/menu-assign-poster.png",
+      "gif": "/media/2026-10-04/menu-assign.gif",
+      "speed": "real time",
+      "caption": "Inside the witch's hut the recorded teacher run opens the inventory, puts the Sleepy Toadstool on the A button and closes the menu again, at normal speed."
+    },
+    {
+      "title": "Feather jump",
+      "webm": "/media/2026-10-04/feather-jump.webm",
+      "poster": "/media/2026-10-04/feather-jump-poster.png",
+      "gif": "/media/2026-10-04/feather-jump.gif",
+      "speed": "real time",
+      "caption": "In Tail Cave the recorded teacher run jumps over a pit with the Roc's Feather, lands on the far side and leaves the room, at normal speed."
+    },
+    {
+      "title": "Arrival at the Tail Cave boss door",
+      "webm": "/media/2026-10-04/boss-door.webm",
+      "poster": "/media/2026-10-04/boss-door-poster.png",
+      "gif": "/media/2026-10-04/boss-door.gif",
+      "speed": "real time",
+      "caption": "The last five seconds of the recorded teacher run, as Link walks up to the boss door of Tail Cave, at normal speed."
+    }
+  ]
+}

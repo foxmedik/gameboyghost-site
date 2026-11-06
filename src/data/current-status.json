@@ -1,0 +1,41 @@
+{
+  "updated": "2026-11-05",
+  "note": "Site-level rollup. Placeholder shape; mbpublish will overwrite `segments[]` from gate records + the latest publication. `num`, `result`, `note` are the live surfaces; the tagline/framing stay in the page.",
+  "segments": [
+    {
+      "id": "S0",
+      "label": "house start → sword",
+      "num": "96/100",
+      "result": "sealed, 96/100",
+      "note": "our pilot. The bar was <strong>90%</strong>."
+    },
+    {
+      "id": "S1",
+      "label": "",
+      "num": "294/294",
+      "result": "sealed, 294/294",
+      "note": "bar raised to <strong>97%</strong>, and held."
+    },
+    {
+      "id": "S2",
+      "label": "",
+      "num": "294/294",
+      "result": "sealed, 294/294",
+      "note": "294 of 300 cases reached the start; the 6 that didn't are counted, not dropped."
+    },
+    {
+      "id": "S3",
+      "label": "",
+      "num": "250/250",
+      "result": "oracle & student certified 250/250",
+      "note": "the student is a faithful copy of the oracle — <strong>not a new capability</strong>, stated up front."
+    },
+    {
+      "id": "S4–S18",
+      "label": "",
+      "num": "not started",
+      "result": "not started",
+      "note": "this is where the real question — can a student <em>exceed</em> its teacher — begins."
+    }
+  ]
+}

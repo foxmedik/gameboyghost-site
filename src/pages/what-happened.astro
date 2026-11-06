@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/FrontDoor.astro';
+---
+
+<Layout
+  title="What happened"
+  description="The failures, written up the way an incident-response team writes a postmortem. This is the product."
+>
+  <h1>What happened</h1>
+
+  <p class="lede">
+    Most project pages show you what worked. This one shows you what broke — and why that matters
+    more.
+  </p>
+
+  <p>
+    Every story here is a real failure, caught by the project's own checks before it could corrupt
+    a sealed result, and written up the way an incident-response team writes a postmortem:
+    <strong>what happened, how it was noticed, how it was fixed, what was learned.</strong> No one
+    gets blamed, no failure is quietly dropped, and where the records don't say something, this
+    page says so instead of guessing.
+  </p>
+
+  <blockquote>These aren't footnotes. They're the product. If you read one page, read this one.</blockquote>
+
+  <h2>The stories</h2>
+
+  <div class="story">
+    <h3><span class="story-num">1</span>The receipt-clamp saga</h3>
+    <p>
+      A safety timeout put in the wrong layer refused the expert's <em>own</em> correct route. It
+      took four phases to move it where it belonged.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">2</span>A replay that would have passed for the wrong reason</h3>
+    <p>
+      Proving <em>where code came from</em> is not the same as proving <em>what it read</em>. A
+      second check caught what the first couldn't.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">3</span>When the design said no</h3>
+    <p>
+      A task prompt contained a decision that contradicted the written design. The agent stopped and
+      said so, and the call was withdrawn.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">4</span>The files that weren't on the list</h3>
+    <p>
+      A hand-kept commit list missed three changed files. A two-way check against <code>git status</code>
+      now makes that impossible.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">5</span>Stuck at the cave door</h3>
+    <p>
+      The oracle's first real run pressed against a cave door for 1,500 decisions. The cause was a
+      4-pixel alignment tolerance.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">6</span>The file <code>git archive</code> leaves behind</h3>
+    <p>
+      "Everything is in git" is never quite true. The replay tooling now refuses when a frozen file
+      is missing.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">7</span>The S2 gate re-lock: 99% → 97%</h3>
+    <p>
+      The first lock set the wrong bar <em>and</em> pinned exact commits. It was replaced before it
+      ever ran.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">8</span>The crumbling-floor fall</h3>
+    <p>
+      The shield stayed up too long, a bat pushed Link back, the floor gave way. One change to
+      <em>when</em> the shield raises fixed it. <a href="/">See it before and after</a>.
+    </p>
+  </div>
+
+  <h2>Not yet written up</h2>
+  <p>Three more real incidents, from the operating side, still need their postmortems:</p>
+
+  <div class="story">
+    <h3><span class="story-num">·</span>The Studio wipe and scripted rebuild</h3>
+    <p>
+      Deliberately destroying and rebuilding the primary machine — and the discipline that made it
+      survivable.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">·</span>The SMB NUL-padding corruption</h3>
+    <p>
+      A file silently padded with NUL bytes, traced to a defect in writing over a network share.
+      Changed the practice: write natively, never over SMB.
+    </p>
+  </div>
+
+  <div class="story">
+    <h3><span class="story-num">·</span>The v4 contamination catch</h3>
+    <p>
+      862 rows of the "held-out" set were actually in the training split. Found it, counted it,
+      published it.
+    </p>
+  </div>
+
+  <h2>The journal</h2>
+  <p>
+    Below the stories, the living record: <a href="/status/">status</a> (what's sealed, certified,
+    and planned right now), results (each experiment's honest outcome), and daily logs (the
+    automated updates). Every entry carries a source note naming the exact files its facts came
+    from — one click from any claim to its proof.
+  </p>
+</Layout>

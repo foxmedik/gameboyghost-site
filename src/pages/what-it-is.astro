@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/FrontDoor.astro';
+---
+
+<Layout
+  title="What it is"
+  description="GameBoyGhost, in plain English: teaching a computer to play Link's Awakening, one stretch at a time, under real change control."
+>
+  <h1>What it is</h1>
+
+  <p class="lede">
+    GameBoyGhost teaches a computer program to play <em>The Legend of Zelda: Link's Awakening</em>,
+    one short stretch at a time, by copying an expert.
+  </p>
+
+  <p>
+    The game is a safe practice target. The real point is to show how to run a technical system
+    carefully and honestly: every run can be repeated exactly, every result is checked before it
+    counts, and every mistake gets written up instead of hidden.
+  </p>
+
+  <blockquote>Imagine wanting to practice good IT habits — change control, audit trails, sign-offs, honest postmortems. You don't practice on a real production system. You use a test system that behaves the same way every time. A Game Boy game in an emulator is exactly that.</blockquote>
+
+  <h2>How it works, in three pieces</h2>
+
+  <p>
+    The game's journey is split into <strong>segments</strong> — short stretches with a clear start
+    and finish. For each one, the project builds three things:
+  </p>
+
+  <ul>
+    <li>
+      A <strong>teacher</strong> (later, an <strong>oracle</strong>) — an expert program that already
+      knows how to play that stretch.
+    </li>
+    <li>
+      A <strong>student</strong> — a small learned program that copies the expert's answers, seeing
+      only a limited view of the game. This is imitation learning.
+    </li>
+    <li>
+      A <strong>gate</strong> — a test written down in advance and run exactly once, that decides
+      whether the segment is done and sealed. Failures are never re-run with an easier bar.
+    </li>
+  </ul>
+
+  <h2>Why a game makes a good test system</h2>
+
+  <ul>
+    <li><strong>It's repeatable.</strong> Every run is its own process; re-runs match byte for byte.</li>
+    <li><strong>It's self-contained.</strong> No network, no clock, one fixed start, button presses only.</li>
+    <li><strong>You can see everything.</strong> "Did this work?" is an exact yes-or-no, not a judgment call.</li>
+    <li><strong>There's a real expert.</strong> The route was mapped room by room, the way a seasoned admin documents a system.</li>
+  </ul>
+
+  <p>
+    The deeper version — the exact numbers, the gate math, the full architecture — lives in
+    <a href="/pitch/">the engine room</a>. This page is the plain-English version; nothing here is
+    simplified at the expense of what's true.
+  </p>
+</Layout>

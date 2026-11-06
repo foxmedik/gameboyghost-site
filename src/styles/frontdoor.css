@@ -1,0 +1,183 @@
+/* ==========================================================================
+   GameBoyGhost — front door ("research lab meets late-night island radio")
+   DMG palette + warm night. The story layer; the Starlight docs stay as-is.
+   ========================================================================== */
+
+:root {
+  --gbg-green: #8BAC0F;
+  --gbg-green-bright: #9BBC0F;
+  --gbg-green-dark: #6a8709;
+  --gbg-green-glow: rgba(139, 172, 15, 0.35);
+
+  --bg: #10161f;
+  --surface: #1a2230;
+  --surface-2: #212b3b;
+  --ink: #ece6d8;
+  --muted: #9aa4b2;
+  --line: #2a3547;
+  --accent-text: #c9e27a;
+
+  --serif: "Source Serif 4 Variable", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-text); }
+
+/* ---- header ---- */
+.site-head {
+  border-bottom: 1px solid var(--line);
+  background: rgba(16, 22, 31, 0.92);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-head-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+.brand svg { height: 28px; width: auto; display: block; }
+.brand-name { font-weight: 700; letter-spacing: 0.02em; }
+.nav { display: flex; gap: 1.1rem; margin-left: auto; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.nav a:hover { color: var(--ink); }
+.nav a.engine { color: var(--accent-text); }
+
+/* ---- layout ---- */
+.page { max-width: 1060px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+.lede { color: var(--muted); font-size: 1.15rem; }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; color: var(--ink); }
+h1 { font-size: clamp(2.2rem, 5vw, 3.3rem); margin: 0 0 0.5rem; font-weight: 800; }
+h2 { font-size: 1.6rem; margin: 3rem 0 1rem; font-weight: 700; }
+h3 { font-size: 1.2rem; margin: 0 0 0.4rem; font-weight: 700; }
+p { margin: 0 0 1rem; }
+
+.mono { font-family: var(--mono); }
+.accent { color: var(--accent-text); }
+
+/* ---- tagline ---- */
+.tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--accent-text);
+  font-style: italic;
+  margin: 0 0 1.5rem;
+  font-weight: 600;
+}
+
+/* ---- hero media (before / after) ---- */
+.hero-media { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.hero-media figure { margin: 0; }
+.hero-media video, .hero-media img {
+  width: 100%;
+  aspect-ratio: 160 / 144;
+  object-fit: cover;
+  background: #000;
+  image-rendering: pixelated;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: block;
+}
+.hero-media figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; }
+.hero-media figcaption .label { color: var(--accent-text); font-weight: 700; }
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--gbg-green);
+  color: var(--accent-text);
+  border-radius: 3px;
+  padding: 0.02rem 0.5rem;
+  font-size: 0.78rem;
+  font-family: var(--mono);
+  text-decoration: none;
+}
+.badge::before { content: "✓ "; }
+
+/* ---- status table ---- */
+.status-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.status-table th, .status-table td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.status-table th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.status-table .num { font-family: var(--mono); color: var(--accent-text); white-space: nowrap; }
+
+/* ---- doors ---- */
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0; }
+.door {
+  display: block;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.door:hover { border-color: var(--gbg-green); transform: translateY(-2px); }
+.door .door-title { font-weight: 700; font-size: 1.15rem; }
+.door .door-sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; }
+
+/* ---- war story list ---- */
+.story {
+  border-left: 3px solid var(--gbg-green);
+  padding: 0.9rem 1.2rem;
+  margin: 1.4rem 0;
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+}
+.story h3 { margin: 0 0 0.3rem; }
+.story p { margin: 0; color: var(--muted); }
+.story .story-num { font-family: var(--mono); color: var(--accent-text); font-size: 0.8rem; margin-right: 0.4rem; }
+
+/* ---- callout / blockquote ---- */
+blockquote {
+  border-left: 3px solid var(--gbg-green);
+  margin: 1.5rem 0;
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---- footer ---- */
+.site-foot {
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.site-foot a { color: var(--accent-text); text-decoration: none; }
+.site-foot .foot-note { font-family: var(--mono); font-size: 0.75rem; max-width: 46rem; margin: 0.8rem auto 0; }
+
+/* ---- light mode ---- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f2e9;
+    --surface: #fffdf7;
+    --surface-2: #f0ead9;
+    --ink: #1f2420;
+    --muted: #5f665c;
+    --line: #e2dbc8;
+    --accent-text: #547000;
+    --gbg-green-glow: rgba(139, 172, 15, 0.18);
+  }
+  .site-head { background: rgba(246, 242, 233, 0.94); }
+}
